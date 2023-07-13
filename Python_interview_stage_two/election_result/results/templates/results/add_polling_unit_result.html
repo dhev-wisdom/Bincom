@@ -1,0 +1,31 @@
+{% extends 'results/base.html' %}
+
+
+{% block content %}
+<h2>Add Polling Unit Result</h2>
+<form method="post">
+  {% csrf_token %}
+  
+  {% if form.errors %}
+    <p class="error-message">Please correct the following errors:</p>
+  {% endif %}
+  
+  <div>
+    <label for="{{ form.polling_unit.id_for_label }}">Polling Unit:</label>
+    {{ form.polling_unit }}
+  </div>
+  
+  <div>
+    <label for="{{ form.party_results.id_for_label }}">Party Results:</label>
+    {{ form.party_results }}
+    {% if form.party_results.errors %}
+      <p class="error-message">{{ form.party_results.errors|join:", " }}</p>
+    {% else %}
+      <p class="hint-message">Enter party results in the format "Party Abbreviation:Party Score". Each result should be on a new line.</p>
+    {% endif %}
+  </div>
+  
+  <input type="submit" value="Submit">
+</form>
+
+{% endblock %}

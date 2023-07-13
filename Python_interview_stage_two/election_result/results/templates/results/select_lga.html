@@ -1,0 +1,18 @@
+
+
+{% extends 'results/base.html' %}
+
+
+{% block content %}
+<form method="post" action="{% url 'lga_results' %}">
+  {% csrf_token %}
+  <label for="lga">Select Local Government:</label>
+  <select id="lga" name="lga">
+    {% for lga in lgas %}
+      <option value="{{ lga }}">{{ lga }}</option>
+    {% endfor %}
+  </select>
+  <input type="submit" value="Submit">
+</form>
+
+{% enblock %}

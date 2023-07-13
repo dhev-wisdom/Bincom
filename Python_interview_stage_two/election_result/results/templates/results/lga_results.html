@@ -1,0 +1,19 @@
+{% extends 'results/base.html' %}
+
+
+{% block content %}
+<h2>Summed Total Results for Local Government: {{ selected_lga }}</h2>
+<table>
+  <tr>
+    <th>Party Abbreviation</th>
+    <th>Total Score</th>
+  </tr>
+  {% for party_result in party_results %}
+    <tr>
+      <td>{{ party_result.party_abbreviation }}</td>
+      <td>{{ party_result.total_score }}</td>
+    </tr>
+  {% endfor %}
+</table>
+
+{% endblock %}

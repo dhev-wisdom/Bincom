@@ -1,0 +1,16 @@
+{% extends 'results/base.html' %}
+
+{% block content %}
+
+<h1>Result for Polling Unit: {{ polling_units.polling_unit_name }}</h1>
+<h3>{{  polling_units.polling_unit_description }}</h3>
+
+<ul>
+    {% for result in announced_results %}
+        <li>{{ result.party_abbreviation }}: {{ result.party_score }}</li>
+    {% empty %}
+        <li>No results found.</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
